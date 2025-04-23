@@ -1,122 +1,128 @@
-/* styles.css – Lab 3 external stylesheet */
-
-/* 1. Import a Google Font */
+/* Google font import */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-/* 2. CSS Variables & Fallbacks */
+/* CSS variables */
 :root {
   --primary-color: hsl(210, 60%, 50%);
   --fallback-color: #ff5722;
   --secondary-color: rgb(100, 150, 200);
-  --accent-color: color(display-p3 0.3 0.6 0.9);
+  --accent-color: rgb(77, 153, 230);
 }
 
-/* 3. Universal selector & box-sizing */
+/* reset box-sizing */
 * {
   box-sizing: border-box;
 }
 
-/* 4. Body reset & typography */
+/* basic page styles */
 body {
-  font-family: 'Roboto', sans-serif;   /* 3rd-party font */
-  margin: 0;                           /* shorthand margin */
-  padding: 1rem;                       /* relative unit (rem) */
-  background-color: var(--fallback-color); /* hex, fallback demo */
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 1rem;
+  background-color: var(--fallback-color);
 }
 
-/* 5. Header styling (ID selector, long-hand & shorthand) */
+/* header styling */
 #top {
-  padding-top:    10px;                /* longhand padding-top */
-  padding-right:  20px;                /* longhand padding-right */
-  padding-bottom: 10px;                /* longhand padding-bottom */
-  padding-left:   20px;                /* longhand padding-left */
-  margin-top:     1cm;                 /* absolute unit (cm) */
-  background-color: rgba(255,255,255,0.8); /* rgba */
-  border-style: solid;                 /* border-style */
-  border-width: 2px;                   /* border-width */
-  border-color: var(--secondary-color);/* border-color */
-  border-radius: 0.5rem;               /* border-radius */
-  display: block;                      /* block display */
+  padding-top: 10px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  margin-top: 1cm;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-style: solid;
+  border-width: 2px;
+  border-color: var(--secondary-color);
+  border-radius: 0.5rem;
+  display: block;
 }
 
-/* 6. Headings (element selector, variables + fallback) */
+/* main heading */
 h1 {
   display: block;
-  color: var(--undefined, var(--primary-color)); /* fallback chain */
-  text-align: center;                 /* text-align */
-  margin-bottom: 2rem;                /* shorthand margin */
+  color: var(--undefined, var(--primary-color));
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
-/* 7. Paragraphs (element selector, units, auto margins) */
+/* paragraph text */
 p {
-  line-height: 1.5;                   /* unitless multiplier */
-  max-width: 80%;                     /* relative unit (%) */
-  margin: auto 0 1em;                 /* shorthand margin + auto */
-  padding: 0.5em;                     /* relative unit (em) */
-  color: hsl(0,100%,20%);             /* hsl */
+  line-height: 1.5;
+  max-width: 80%;
+  margin: auto 0 1em;
+  padding: 0.5em;
+  color: hsl(0, 100%, 20%);
 }
 
-/* 8. Links (combining selectors & pseudo-class) */
+/* primary links */
 a.primary-link {
-  text-decoration: none;              /* text-decoration */
-  color: var(--accent-color);         /* wider-gamut color */
-}
-a:hover {
-  text-decoration: underline;         /* :hover */
+  text-decoration: none;
+  color: var(--accent-color);
 }
 
-/* 9. Form inputs (attribute selector, absolute units) */
+/* link hover */
+a:hover {
+  text-decoration: underline;
+}
+
+/* form inputs */
 input[type="text"],
 input[type="email"],
 input[type="tel"] {
-  display: inline-block;              /* display */
-  width: 200px;                       /* absolute unit (px) */
-  height: 2cm;                        /* absolute unit (cm) */
-  padding: 5px;                       /* absolute unit (px) */
-}
-label + input {
-  margin-bottom: 10px;                /* adjacent sibling combinator */
+  display: inline-block;
+  width: 200px;
+  height: 2cm;
+  padding: 5px;
 }
 
-/* 10. Navigation (descendant & child combinators) */
+/* label + input spacing */
+label + input {
+  margin-bottom: 10px;
+}
+
+/* nav list reset */
 nav ul {
   list-style: none;
   padding-left: 0;
 }
+
+/* nav items inline */
 nav > ul > li {
-  display: inline;                    /* display */
+  display: inline;
   margin-right: 1rem;
 }
 
-/* 11. Selector list */
+/* multiple headings */
 h2, h3 {
   font-family: serif, sans-serif;
 }
 
-/* 12. General sibling */
+/* paragraph after h2 */
 h2 ~ p {
-  color: hsla(120,60%,40%,0.7);       /* hsla */
+  color: hsla(120, 60%, 40%, 0.7);
 }
 
-/* 13. Display‐none helper */
-.hide { display: none; }
+/* helper to hide things */
+.hide {
+  display: none;
+}
 
-/* 14. Main container sizing */
+/* main container width */
 main {
-  min-width: 300px;                   /* min-width */
-  max-width: 1200px;                  /* max-width */
+  min-width: 300px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-/* 15. Footer (relative positioning + width) */
+/* footer area */
 footer {
-  position: relative;                 /* position */
+  position: relative;
   width: 100%;
   text-align: center;
-  background-color: color-mix(in srgb, blue 50%, red 50%); /* color-mix */
+  background-color: #800080;
 }
 
-/* 16. Flexbox layout (3+ children, 3 properties) */
+/* flexbox example */
 .flex-container {
   display: flex;
   flex-direction: row;
@@ -125,7 +131,7 @@ footer {
   gap: 1rem;
 }
 
-/* 17. Grid layout (3+ children, 3 properties) */
+/* grid example */
 .grid-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -134,39 +140,32 @@ footer {
   align-content: start;
 }
 
-/* 18. Pseudo-class focus */
+/* focus state */
 input:focus {
   outline: 2px solid var(--primary-color);
 }
 
-/* 19. Sticky & absolute positioning */
+/* sticky fieldset */
 form fieldset {
   position: sticky;
   top: 0;
 }
+
+/* absolute-positioned button */
 button[type="submit"] {
   position: absolute;
   right: 10px;
   bottom: 10px;
 }
 
-/* 20. Media query (responsive) */
+/* responsive breakpoint */
 @media (max-width: 600px) {
   .flex-container {
     flex-direction: column;
   }
 }
 
-/* 21. New :has() selector */
+/* new :has() selector */
 section:has(img) {
   border: 2px dashed #333;
-}
-
-/* 22. CSS Nesting (experimental syntax) */
-nav {
-  ul {
-    li {
-      font-weight: bold;
-    }
-  }
 }
