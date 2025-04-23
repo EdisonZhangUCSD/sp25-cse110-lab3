@@ -106,25 +106,22 @@ main {
 }
 
 /*--------------------------------------------------
-  Card flip specific (original + nesting example)
+  Card flip specific
 --------------------------------------------------*/
 .flip-card {
   width: 4em;                                      /* relative unit */
   height: 6em;                                     /* relative unit */
   perspective: 1000px;
   position: relative;                              /* position: relative */
-
-  /* nested selector example using new @nest syntax */
-  @nest & .flip-card-inner {
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-  }
 }
 
 .flip-card-inner {
   width: 100%;
   height: 100%;
   position: relative;
+  /* moved here to avoid the parse error */
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
 }
 
 .flip-card:hover .flip-card-inner {                /* descendant combinator */
@@ -227,7 +224,7 @@ footer {
   bottom: 0;
   width: 100%;
   padding: 0.5em;
-  background: var(--mixed-color);                  /* wider-gamut color */
+  background-color: var(--mixed-color, #cccccc);            /* fixed to use background-color */
 }
 
 /* nested grid example */
@@ -264,19 +261,18 @@ form:has(input:invalid) {                          /* new :has() selector */
 
 /*Wider-gamut color() example*/
 :root {
-    --p3-magenta: color(display-p3 1 0 1); /* wider-gamut color() */
-  }
-  
-  /*Padding longhand example*/
-  nav {
-    padding-top:    0.5em;   /* longhand */
-    padding-right:  1em;     /* longhand */
-    padding-bottom: 0.5em;   /* longhand */
-    padding-left:   1em;     /* longhand */
-  }
-  
-  /*Extra absolute unit example*/
-  footer {
-    margin-top: 1cm;         /* uses “cm” as an absolute unit */
-  }
-  
+  --p3-magenta: color(display-p3 1 0 1); /* wider-gamut color() */
+}
+
+/* Padding longhand example */
+nav {
+  padding-top:    0.5em;   /* longhand */
+  padding-right:  1em;     /* longhand */
+  padding-bottom: 0.5em;   /* longhand */
+  padding-left:   1em;     /* longhand */
+}
+
+/* Extra absolute unit example */
+footer {
+  margin-top: 1cm;         /* uses “cm” as an absolute unit */
+}
