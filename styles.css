@@ -1,171 +1,284 @@
-/* Google font import */
+/*--------------------------------------------------
+  Google Font import
+--------------------------------------------------*/
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-/* CSS variables */
+/*--------------------------------------------------
+  CSS Variables & color definitions
+--------------------------------------------------*/
 :root {
-  --primary-color: hsl(210, 60%, 50%);
-  --fallback-color: #ff5722;
-  --secondary-color: rgb(100, 150, 200);
-  --accent-color: rgb(77, 153, 230);
+  --main-color: hsl(210, 50%, 60%);                /* HSL color */
+  --accent-color: #FF5722;                         /* hex fallback */
+  --fallback-color: rgb(255, 87, 34);              /* rgb fallback */
+  --mixed-color: color-mix(in srgb, red 60%, blue 40%);
 }
 
-/* reset box-sizing */
+/*--------------------------------------------------
+  Global resets & box-sizing
+--------------------------------------------------*/
 * {
-  box-sizing: border-box;
+  box-sizing: border-box;                          /* universal selector */
 }
 
-/* basic page styles */
+/*--------------------------------------------------
+  Body styling
+--------------------------------------------------*/
 body {
-  font-family: 'Roboto', sans-serif;
-  margin: 0;
-  padding: 1rem;
-  background-color: var(--fallback-color);
+  font-family: 'Roboto', sans-serif;               /* 3rd-party font */
+  background-color: #f9f9f9;                       /* background-color */
+  color: var(--main-color, #000);                  /* var() with fallback */
+  margin: 0;                                       /* shorthand margin */
+  padding: 0;                                      /* shorthand padding */
 }
 
-/* header styling */
-#top {
-  padding-top: 10px;
-  padding-right: 20px;
-  padding-bottom: 10px;
-  padding-left: 20px;
-  margin-top: 1cm;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-style: solid;
-  border-width: 2px;
-  border-color: var(--secondary-color);
-  border-radius: 0.5rem;
-  display: block;
+/*--------------------------------------------------
+  Typography & text
+--------------------------------------------------*/
+h1, h2, h3 {
+  text-align: center;                              /* text-align */
+  margin-bottom: 0.5rem;                           /* rem unit */
 }
 
-/* main heading */
-h1 {
-  display: block;
-  color: var(--undefined, var(--primary-color));
-  text-align: center;
-  margin-bottom: 2rem;
+label {
+  font-size: 12pt;                                 /* absolute unit */
 }
 
-/* paragraph text */
 p {
-  line-height: 1.5;
-  max-width: 80%;
-  margin: auto 0 1em;
-  padding: 0.5em;
-  color: hsl(0, 100%, 20%);
+  line-height: 1.4;                                /* plain element selector */
 }
 
-/* primary links */
-a.primary-link {
-  text-decoration: none;
-  color: var(--accent-color);
+a {
+  color: var(--accent-color);                     /* named color */
+  text-decoration: none;                           /* text-decoration */
 }
 
-/* link hover */
 a:hover {
-  text-decoration: underline;
+  text-decoration: underline;                      /* pseudo-class */
 }
 
-/* form inputs */
-input[type="text"],
-input[type="email"],
-input[type="tel"] {
-  display: inline-block;
-  width: 200px;
-  height: 2cm;
-  padding: 5px;
+a:active {
+  opacity: 0.7;                                    /* pseudo-class */
 }
 
-/* label + input spacing */
-label + input {
-  margin-bottom: 10px;
+/*--------------------------------------------------
+  Layout containers
+--------------------------------------------------*/
+header {
+  position: static;                                /* position: static */
+  padding: 1em;                                    /* shorthand padding */
 }
 
-/* nav list reset */
+nav {
+  display: block;                                  /* display:block */
+}
+
 nav ul {
-  list-style: none;
-  padding-left: 0;
+  display: flex;                                   /* flex layout */
+  flex-wrap: wrap;
+  gap: 0.5em;
+  list-style: none;                                /* reset bullets */
 }
 
-/* nav items inline */
-nav > ul > li {
-  display: inline;
-  margin-right: 1rem;
+nav > ul > li {                                    /* child combinator */
+  margin-right: 1em;                               /* longhand margin */
 }
 
-/* multiple headings */
-h2, h3 {
-  font-family: serif, sans-serif;
+nav a {
+  display: inline-block;                           /* display:inline-block */
+  padding: 0.3em 0.6em;                            /* padding shorthand */
 }
 
-/* paragraph after h2 */
-h2 ~ p {
-  color: hsla(120, 60%, 40%, 0.7);
-}
-
-/* helper to hide things */
-.hide {
-  display: none;
-}
-
-/* main container width */
+/*--------------------------------------------------
+  Main & responsive sizing
+--------------------------------------------------*/
 main {
-  min-width: 300px;
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 90vw;                                 /* max-width + vw */
+  min-width: 300px;                                /* min-width + px */
+  margin: auto;                                    /* shorthand auto margin */
 }
 
-/* footer area */
-footer {
-  position: relative;
-  width: 100%;
-  text-align: center;
-  background-color: #800080;
-}
-
-/* flexbox example */
-.flex-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-}
-
-/* grid example */
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: minmax(100px, auto);
-  grid-gap: 10px;
-  align-content: start;
-}
-
-/* focus state */
-input:focus {
-  outline: 2px solid var(--primary-color);
-}
-
-/* sticky fieldset */
-form fieldset {
-  position: sticky;
-  top: 0;
-}
-
-/* absolute-positioned button */
-button[type="submit"] {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-}
-
-/* responsive breakpoint */
-@media (max-width: 600px) {
-  .flex-container {
-    flex-direction: column;
+@media (max-width: 600px) {                        /* media query */
+  nav ul {
+    display: grid;                                 /* grid layout */
+    grid-template-columns: repeat(2, 1fr);         /* grid-template-columns */
+    grid-gap: 0.5em;                               /* grid-gap */
   }
 }
 
-/* new :has() selector */
-section:has(img) {
-  border: 2px dashed #333;
+/*--------------------------------------------------
+  Card flip specific (original + nesting example)
+--------------------------------------------------*/
+.flip-card {
+  width: 4em;                                      /* relative unit */
+  height: 6em;                                     /* relative unit */
+  perspective: 1000px;
+  position: relative;                              /* position: relative */
+
+  /* nested selector example using new @nest syntax */
+  @nest & .flip-card-inner {
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
 }
+
+.flip-card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.flip-card:hover .flip-card-inner {                /* descendant combinator */
+  transform: rotateY(180deg);
+}
+
+/* front/back faces */
+.spade-2, .flip-card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;                              /* position:absolute */
+  border: 0.2em solid black;                      /* shorthand border */
+  border-radius: 1em;                             /* border-radius */
+  backface-visibility: hidden;
+  box-sizing: border-box;
+}
+
+/* spade number */
+.spade-2 h2 {
+  margin: 0;                                       /* shorthand margin */
+  position: absolute;
+  top: 0.3em;
+  left: 0.4em;
+  font-size: 1em;
+}
+
+/* spade suit */
+.spade-2 p {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  font-size: 3em;
+}
+
+/* back of card */
+.flip-card-back {
+  background-image: url('https://s2.coinmarketcap.com/static/img/coins/200x200/35029.png');
+  background-size: cover;
+  background-position: center;
+  transform: rotateY(180deg);
+}
+
+/*--------------------------------------------------
+  Forms & inputs
+--------------------------------------------------*/
+input[type="text"],
+input[type="email"] {                              /* attribute selector */
+  border-width: 1px;                               /* longhand border */
+  border-style: solid;
+  border-color: var(--accent-color);
+  padding: 0.5em;                                  /* shorthand padding */
+  font-size: 0.9rem;                              /* rem unit */
+}
+
+button {
+  padding: 0.6em 1.2em;
+  border: none;
+  background-color: var(--accent-color);
+  color: white;
+  cursor: pointer;
+}
+
+button:active {                                     /* pseudo-class */
+  transform: scale(0.98);
+}
+
+/*--------------------------------------------------
+  Deck & dealt area (already flexbox)
+--------------------------------------------------*/
+#deck,
+#dealt-area {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+/* controls */
+#controls {
+  margin: 0.5em 0 1em;                             /* shorthand margin */
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+  font-family: sans-serif;
+  position: sticky;                                /* sticky positioning */
+  top: 0;
+  background: white;
+}
+
+/*--------------------------------------------------
+  Footer as grid + fixed example
+--------------------------------------------------*/
+footer {
+  display: grid;                                   /* grid layout */
+  grid-template-columns: 1fr auto;
+  grid-gap: 1em;
+  align-items: center;
+  position: fixed;                                 /* fixed positioning */
+  bottom: 0;
+  width: 100%;
+  padding: 0.5em;
+  background: var(--mixed-color);                  /* wider-gamut color */
+}
+
+/* nested grid example */
+footer figure {
+  margin: 0;
+}
+
+/* text following h2 (general sibling) */
+h2 ~ p {                                           /* general sibling combinator */
+  color: var(--fallback-color);
+}
+
+/* paragraph immediately after h3 (adjacent sibling) */
+h3 + p {                                           /* adjacent sibling combinator */
+  font-style: italic;
+}
+
+/* highlight class combining element.class */
+p.highlight {                                      /* combining selectors */
+  background-color: rgba(255, 87, 34, 0.2);
+}
+
+/* hide media on print */
+@media print {
+  audio, video {                                  /* display:none */
+    display: none;
+  }
+}
+
+/* form invalid state example with :has() */
+form:has(input:invalid) {                          /* new :has() selector */
+  border: 2px solid red;
+}
+
+/*Wider-gamut color() example*/
+:root {
+    --p3-magenta: color(display-p3 1 0 1); /* wider-gamut color() */
+  }
+  
+  /*Padding longhand example*/
+  nav {
+    /* you already have nav { display: block; } above—just add these */
+    padding-top:    0.5em;   /* longhand */
+    padding-right:  1em;     /* longhand */
+    padding-bottom: 0.5em;   /* longhand */
+    padding-left:   1em;     /* longhand */
+  }
+  
+  /*Extra absolute unit example*/
+  footer {
+    /* you already have footer { display: grid; … } above—just add this */
+    margin-top: 1cm;         /* uses “cm” as an absolute unit */
+  }
+  
