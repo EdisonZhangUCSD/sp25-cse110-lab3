@@ -269,7 +269,6 @@ form:has(input:invalid) {                          /* new :has() selector */
   
   /*Padding longhand example*/
   nav {
-    /* you already have nav { display: block; } above—just add these */
     padding-top:    0.5em;   /* longhand */
     padding-right:  1em;     /* longhand */
     padding-bottom: 0.5em;   /* longhand */
@@ -278,7 +277,6 @@ form:has(input:invalid) {                          /* new :has() selector */
   
   /*Extra absolute unit example*/
   footer {
-    /* you already have footer { display: grid; … } above—just add this */
     margin-top: 1cm;         /* uses “cm” as an absolute unit */
   }
   
